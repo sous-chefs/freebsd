@@ -51,6 +51,7 @@ action :create do
       action :create
     end
   end
+  new_resource.updated_by_last_action(true)
 end
 
 def load_current_resource
