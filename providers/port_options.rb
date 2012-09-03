@@ -23,10 +23,10 @@ include Chef::Mixin::ShellOut
 
 action :create do
   if new_resource.source
-    template new_resource.full_path do
+    res = template new_resource.full_path do
       mode 0644
       source new_resource.source
-      action :create
+      action :nothing
     end
   else
     output = []
@@ -45,13 +45,14 @@ action :create do
       output << "#{v ? "WITH" : "WITHOUT"}_#{k}=true"
     end
 
-    file new_resource.full_path do
+    res = file new_resource.full_path do
       mode 0644
       content output.join("\n") + "\n"
-      action :create
+      action :nothing
     end
   end
-  new_resource.updated_by_last_action(true)
+  res.run_action(:create)
+  new_resource.updated_by_last_action(res.updated_by_last_action?)
 end
 
 def load_current_resource
