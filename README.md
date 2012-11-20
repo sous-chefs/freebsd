@@ -19,6 +19,8 @@ Attributes
 Resources/Providers
 ===================
 
+# port\_options
+
 The port\_options LWRP provides an easy way to set port options from within a cookbook.
 
 It can be used in two different ways:
@@ -33,17 +35,17 @@ to file, this is converted to the format that FreeBSD ports expect:
     | APACHE           | true  | WITH_APACHE=true    |
     | APACHE           | false | WITHOUT_APACHE=true |
 
-# Actions
+## Actions
 
 - :create: create the port options file according to the given options. Default action.
 
-# Attribute Parameters
+## Attribute Parameters
 
 - name: name attribute. The name of the port whose options file you want to manipulate;
 - source: if the attribute is set, it will be used to look up a template, which will then be saved as a port options file;
 - options: a hash with the option name as the key, and a boolean as value.
 
-# Examples
+## Examples
 
     # freebsd-php5-options will be written out as /var/db/ports/php5/options
     freebsd_port_options "php5" do
@@ -57,6 +59,42 @@ to file, this is converted to the format that FreeBSD ports expect:
     freebsd_port_options "php5" do
       options "APACHE" => true
       action :create
+    end
+
+# kernel\_module
+
+The kernel\_module LWRP provides a way to enable or disable kernel modules from within a cookbook.
+
+## Actions
+
+- :enable: enable the kernel module. Default action.
+- :disable: disable the kernel module.
+
+## Examples
+
+    # enable the if_carp kernel module
+    freebsd_kernel_module "if_carp" do
+      action :enable
+    end
+
+# sysctl
+
+The sysctl LWRP provides a way to set FreeBSD sysctl's from within a cookbook.
+
+## Actions
+
+- :set: set the sysctl. Default action.
+
+## Examples
+
+    # Preempt all CARP interfaces when any of them go down
+    freebsd_sysctl "net.inet.carp.preempt" do
+      value true
+    end
+
+    # Enable verbose logging of CARP packets
+    freebsd_syscyl "net.inet.carp.log" do
+      value 64
     end
 
 Usage
