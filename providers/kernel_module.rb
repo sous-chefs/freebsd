@@ -1,20 +1,5 @@
-def kernel_module_enabled?(name)
-  cmd = Mixlib::ShellOut.new("kldstat")
-  cmd.run_command
-  cmd.error!
-  cmd.stdout.include?("#{name}.ko")
-end
-
-def load_kernel_module(name)
-  cmd = Mixlib::ShellOut.new("kldload #{name}")
-  cmd.run_command
-  cmd.error!
-end
-
-def unload_kernel_module(name)
-  cmd = Mixlib::ShellOut.new("kldunload #{name}")
-  cmd.run_command
-  cmd.error!
+class Chef::Provider
+  include KernelModule
 end
 
 action :enable do
@@ -55,6 +40,18 @@ action :disable do
 end
 
 private
+
+def load_kernel_module(name)
+  cmd = Mixlib::ShellOut.new("kldload #{name}")
+  cmd.run_command
+  cmd.error!
+end
+
+def unload_kernel_module(name)
+  cmd = Mixlib::ShellOut.new("kldunload #{name}")
+  cmd.run_command
+  cmd.error!
+end
 
 def read_loader_conf
   ::File.open("/boot/loader.conf", 'r') { |file| file.readlines }
