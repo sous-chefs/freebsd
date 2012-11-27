@@ -1,3 +1,7 @@
+## v0.0.6:
+
+* [COOK-1605] - `freebsd_port_options` always notifies
+
 ## v0.0.4:
 
 * [COOK-1430] - resolve foodcritic warnings; LWRP now defines default action
