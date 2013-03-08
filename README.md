@@ -93,7 +93,7 @@ The sysctl LWRP provides a way to set FreeBSD sysctl's from within a cookbook.
     end
 
     # Enable verbose logging of CARP packets
-    freebsd_syscyl "net.inet.carp.log" do
+    freebsd_sysctl "net.inet.carp.log" do
       value 64
     end
 
