@@ -21,7 +21,7 @@ def set_sysctl(name, value)
   end
 
   Chef::Log.info "Setting sysctl #{name} to #{value}"
-  cmd = Mixlib::ShellOut.new("sysctl -w #{name}='#{value}'")
+  cmd = Mixlib::ShellOut.new("sysctl #{name}='#{value}'")
   cmd.run_command
   cmd.error!
 end
