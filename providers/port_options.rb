@@ -51,7 +51,6 @@ action :create do
       action :nothing
     end
   end
-  ::FileUtils.mkdir_p(::File.dirname(new_resource.full_path)) #directory "/var/db/ports/nginx/" do #didn't work
   res.run_action(:create)
   new_resource.updated_by_last_action(res.updated_by_last_action?)
 end
