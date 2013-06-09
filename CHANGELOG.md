@@ -1,3 +1,9 @@
+## v0.1.0:
+
+### Bug
+
+- [COOK-2568]: FreeBSD cookbook throws Error in runtime
+
 ## v0.0.6:
 
 * [COOK-1605] - `freebsd_port_options` always notifies
