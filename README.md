@@ -13,6 +13,13 @@ Attributes
 
 Usage
 -----
+#### freebsd::portsnap
+
+This recipe ensures the Ports Collection collection is fully up to date.
+
+This recipe should appear first in the run list of FreeBSD nodes to ensure that
+the package cache is up to date before managing any `package` resources with
+Chef.
 
 Resources/Providers
 -------------------
@@ -69,8 +76,10 @@ License and Authors
 -------------------
 
 Author:: Andrea Campi (<andrea.campi@zephirworks.com>)
+Author:: Seth Chisamore (<schisamo@opscode.com>)
 
 Copyright 2010-2012, ZephirWorks
+Copyright 2013, Opscode, Inc. (<legal@opscode.com>)
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
