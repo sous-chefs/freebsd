@@ -118,5 +118,5 @@ end
 
 def ports_makefile_options_variable_value(variable = 'OPTIONS')
   make_v = shell_out!("make -V #{variable}", :cwd => port_path, :env => nil, :returns => [0, 1])
-  make_v.stdout.strip.scan /(\S+?) ".+?" (\S+?)\b/
+  make_v.stdout.strip.scan(/(\S+?) ".+?" (\S+?)\b/)
 end
