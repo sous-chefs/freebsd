@@ -30,6 +30,6 @@ attribute :file_writer, :kind_of => String
 
 def initialize(*args)
   super
-  @full_path = "/var/db/ports/#{self.name}/options"
+  @full_path = "/var/db/ports/#{name}/options"
   @action = :create
 end

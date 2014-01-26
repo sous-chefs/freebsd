@@ -1,25 +1,32 @@
-Description
-===========
+freebsd Cookbook
+================
 
 Handles FreeBSD-specific features and quirks.
 
 Requirements
-============
-
-Platform
---------
-
-* FreeBSD
+------------
 
 Tested on FreeBSD 7.2, 8.0, 8.1, 8.2 and 9.0.
 
 Attributes
-==========
+----------
+
+Usage
+-----
+#### freebsd::portsnap
+
+This recipe ensures the Ports Collection collection is fully up to date.
+
+This recipe should appear first in the run list of FreeBSD nodes to ensure that
+the package cache is up to date before managing any `package` resources with
+Chef.
 
 Resources/Providers
-===================
+-------------------
 
-The port\_options LWRP provides an easy way to set port options from within a cookbook.
+### port_options
+
+Provides an easy way to set port options from within a cookbook.
 
 It can be used in two different ways:
 
@@ -29,45 +36,50 @@ It can be used in two different ways:
 Note that the options hash take simple options names as keys and a boolean as value; when saving
 to file, this is converted to the format that FreeBSD ports expect:
 
-    | LWRP option name | value | options file        |
-    | APACHE           | true  | WITH_APACHE=true    |
-    | APACHE           | false | WITHOUT_APACHE=true |
+Option Key Name | Option Value | Options File
+--------------- |------------- |-------------
+APACHE          | true         | WITH_APACHE=true
+APACHE          | false        | WITHOUT_APACHE=true
 
-# Actions
+#### Actions
+Action  | Description                                                 | Default
+------- |-------------                                                |---------
+create  | create the port options file according to the given options | Yes
 
-- :create: create the port options file according to the given options. Default action.
 
-# Attribute Parameters
+#### Attributes
+Attribute   | Description
+-------     |-------------
+name        | The name of the port whose options file you want to manipulate;
+source      | if the attribute is set, it will be used to look up a template, which will then be saved as a port options file
+options     | a hash with the option name as the key, and a boolean as value.
 
-- name: name attribute. The name of the port whose options file you want to manipulate;
-- source: if the attribute is set, it will be used to look up a template, which will then be saved as a port options file;
-- options: a hash with the option name as the key, and a boolean as value.
+#### Examples
 
-# Examples
+```ruby
+# freebsd-php5-options will be written out as /var/db/ports/php5/options
+freebsd_port_options "php5" do
+  source "freebsd-php5-options.erb"
+  action :create
+end
 
-    # freebsd-php5-options will be written out as /var/db/ports/php5/options
-    freebsd_port_options "php5" do
-      source "freebsd-php5-options.erb"
-      action :create
-    end
+# Default options will be read from /usr/ports/lang/php5;
+# current options from /var/db/ports/php5/options (if exists);
+# the APACHE options will be set to true, the others will be unchanged
+freebsd_port_options "php5" do
+  options "APACHE" => true
+  action :create
+end
+```
 
-    # Default options will be read from /usr/ports/lang/php5;
-    # current options from /var/db/ports/php5/options (if exists);
-    # the APACHE options will be set to true, the others will be unchanged
-    freebsd_port_options "php5" do
-      options "APACHE" => true
-      action :create
-    end
-
-Usage
-=====
-
-License and Author
-==================
+License and Authors
+-------------------
 
 Author:: Andrea Campi (<andrea.campi@zephirworks.com>)
+Author:: Seth Chisamore (<schisamo@opscode.com>)
 
 Copyright 2010-2012, ZephirWorks
+Copyright 2013, Opscode, Inc. (<legal@opscode.com>)
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
