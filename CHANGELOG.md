@@ -1,6 +1,11 @@
 freebsd cookbook CHANGELOG
 ==========================
 
+v0.1.2 (2014-02-25)
+-------------------
+[COOK-3933] - Add a recipe for ensuring the Ports Collection is up-to-date
+
+
 v0.1.0
 -----
 - [COOK-2568]: FreeBSD cookbook throws Error in runtime
