@@ -60,7 +60,7 @@ def load_current_resource
 
   @current_resource.default_options(load_default_options)
 
-  if ::File.exists?(new_resource.full_path)
+  if ::File.exist?(new_resource.full_path)
     @current_resource.current_options(load_current_options)
   end
 
