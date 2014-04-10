@@ -1,6 +1,11 @@
 freebsd cookbook CHANGELOG
 ==========================
 
+v0.1.2 (2014-04-09)
+-------------------
+- [COOK-4454] Added FreeBSD 10 to test harness
+
+
 v0.1.2 (2014-02-25)
 -------------------
 [COOK-3933] - Add a recipe for ensuring the Ports Collection is up-to-date
