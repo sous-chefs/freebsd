@@ -33,7 +33,7 @@ script 'create non-interactive portsnap' do
 end
 
 # Ensure we have a ports tree
-unless File.exists?('/usr/ports/.portsnap.INDEX')
+unless File.exist?('/usr/ports/.portsnap.INDEX')
   execute "#{non_interactive_portsnap} fetch extract"
 end
 
