@@ -1,6 +1,10 @@
 freebsd cookbook CHANGELOG
 ==========================
 
+v0.1.6 (2014-08-01)
+-------------------
+- Update provider to match Chef-Client 11.14.2 changes
+
 v0.1.2 (2014-04-09)
 -------------------
 - [COOK-4454] Added FreeBSD 10 to test harness
