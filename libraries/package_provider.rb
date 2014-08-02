@@ -17,13 +17,13 @@
 # limitations under the License.
 #
 
-require 'chef/provider/package/freebsd/base'
+require 'chef/provider/package/freebsd'
 
 class Chef
   class Provider
     class Package
       #
-      module Freebsd
+      class Freebsd
         alias_method :original_initialize, :initialize
 
         def initialize(*args)
