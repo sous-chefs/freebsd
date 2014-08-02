@@ -17,22 +17,53 @@
 # limitations under the License.
 #
 
-require 'chef/provider/package/freebsd'
+chef_version = ::Chef::VERSION.split('.')[0..2].join('.').to_f
 
-class Chef
-  class Provider
-    class Package
-      #
-      class Freebsd
-        alias_method :original_initialize, :initialize
+if chef_version < 11.14
+  require 'chef/provider/package/freebsd'
+else
+  require 'chef/provider/package/freebsd/base'
+end
 
-        def initialize(*args)
-          original_initialize(*args)
+# Ugly hacks to support ugly monkey patching.
+# Somebody should find a better way to support FreeBSD < 8.2
+if chef_version < 11.14
+  class Chef
+    class Provider
+      class Package
+        #
+        class FreeBSD
+          alias_method :original_initialize, :initialize
 
-          if node.platform == 'freebsd' && node.platform_version.to_f < 8.2 &&
-              @new_resource.source != 'ports'
-            Chef::Log.info "Packages for FreeBSD < 8.2 are gone, forcing #{@new_resource.name} to install from ports (was: #{@new_resource.source.inspect})"
-            @new_resource.source('ports')
+          def initialize(*args)
+            original_initialize(*args)
+
+            if node.platform == 'freebsd' && node.platform_version.to_f < 8.2 &&
+                @new_resource.source != 'ports'
+              Chef::Log.info "Packages for FreeBSD < 8.2 are gone, forcing #{@new_resource.name} to install from ports (was: #{@new_resource.source.inspect})"
+              @new_resource.source('ports')
+            end
+          end
+        end
+      end
+    end
+  end
+else
+  class Chef
+    class Provider
+      class Package
+        #
+        module FreeBSD
+          alias_method :original_initialize, :initialize
+
+          def initialize(*args)
+            original_initialize(*args)
+
+            if node.platform == 'freebsd' && node.platform_version.to_f < 8.2 &&
+                @new_resource.source != 'ports'
+              Chef::Log.info "Packages for FreeBSD < 8.2 are gone, forcing #{@new_resource.name} to install from ports (was: #{@new_resource.source.inspect})"
+              @new_resource.source('ports')
+            end
           end
         end
       end
