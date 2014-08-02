@@ -1,6 +1,10 @@
 freebsd cookbook CHANGELOG
 ==========================
 
+v0.1.8 (2014-08-02)
+-------------------
+- Reverting changes made in v0.1.6
+
 v0.1.6 (2014-08-01)
 -------------------
 - Update provider to match Chef-Client 11.14.2 changes
