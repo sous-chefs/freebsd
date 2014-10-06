@@ -17,24 +17,31 @@
 # limitations under the License.
 #
 
-non_interactive_portsnap = File.join(Chef::Config[:file_cache_path], 'portsnap')
+case node['platform_version']
+when /10/
+  portsnap_bin = "portsnap"
+  portsnap_options = "--interactive"
+else
+  portsnap_bin = File.join(Chef::Config[:file_cache_path], 'portsnap')
+  portsnap_options = ""
 
-# The sed forces portsnap to run non-interactively
-# fetch downloads a ports snapshot, extract puts them on disk (long)
-# update will update an existing ports tree
-script 'create non-interactive portsnap' do
-  interpreter 'sh'
-  code <<-EOS
-    set -e # ensure we exit at first non-zero
-    sed -e 's/\\[ ! -t 0 \\]/false/' /usr/sbin/portsnap > #{non_interactive_portsnap}
-    chmod +x #{non_interactive_portsnap}
-  EOS
-  not_if { File.exist?(non_interactive_portsnap) }
+  # The sed forces portsnap to run non-interactively
+  # fetch downloads a ports snapshot, extract puts them on disk (long)
+  # update will update an existing ports tree
+  script 'create non-interactive portsnap' do
+    interpreter 'sh'
+    code <<-EOS
+      set -e # ensure we exit at first non-zero
+      sed -e 's/\\[ ! -t 0 \\]/false/' /usr/sbin/portsnap > #{portsnap_bin}
+      chmod +x #{portsnap_bin}
+    EOS
+    not_if { File.exist?(portsnap_bin) }
+  end
 end
 
 # Ensure we have a ports tree
 unless File.exist?('/usr/ports/.portsnap.INDEX')
-  execute "#{non_interactive_portsnap} fetch extract"
+  execute "#{portsnap_bin} fetch extract #{portsnap_options}"
 end
 
-execute "#{non_interactive_portsnap} update"
+execute "#{portsnap_bin} update #{portsnap_options}"
