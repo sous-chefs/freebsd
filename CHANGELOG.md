@@ -1,6 +1,10 @@
 freebsd cookbook CHANGELOG
 ==========================
 
+v0.1.10 (2014-10-06)
+-------------------
+- Update method used for non-interactive portsnap on FreeBSD 10
+
 v0.1.9 (2014-08-02)
 -------------------
 - Updating to support both 11.12.8 and 11.4.2
