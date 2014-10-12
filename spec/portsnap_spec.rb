@@ -4,7 +4,7 @@ describe 'freebsd::portsnap' do
   let(:chef_run) do
     ChefSpec::Runner.new(
       :platform => 'freebsd',
-      :version => '10.0'
+      :version => '9.2'
       ).converge('freebsd::portsnap')
   end
 
