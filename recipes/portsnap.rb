@@ -28,7 +28,7 @@ else
   # The sed forces portsnap to run non-interactively
   # fetch downloads a ports snapshot, extract puts them on disk (long)
   # update will update an existing ports tree
-  script 'create non-interactive portsnap' do
+  s = script 'create non-interactive portsnap' do
     interpreter 'sh'
     code <<-EOS
       set -e # ensure we exit at first non-zero
@@ -36,12 +36,20 @@ else
       chmod +x #{portsnap_bin}
     EOS
     not_if { File.exist?(portsnap_bin) }
+    action(node['freebsd']['compiletime_portsnap'] ? :nothing : :run)
   end
+  s.run_action(:run) if node['freebsd']['compiletime_portsnap']
 end
 
 # Ensure we have a ports tree
 unless File.exist?('/usr/ports/.portsnap.INDEX')
-  execute "#{portsnap_bin} fetch extract #{portsnap_options}".strip
+  e = execute "#{portsnap_bin} fetch extract #{portsnap_options}".strip do
+    action(node['freebsd']['compiletime_portsnap'] ? :nothing : :run)
+  end
+  e.run_action(:run) if node['freebsd']['compiletime_portsnap']
 end
 
-execute "#{portsnap_bin} update #{portsnap_options}".strip
+e = execute "#{portsnap_bin} update #{portsnap_options}".strip do
+  action(node['freebsd']['compiletime_portsnap'] ? :nothing : :run)
+end
+e.run_action(:run) if node['freebsd']['compiletime_portsnap']

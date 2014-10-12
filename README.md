@@ -14,6 +14,9 @@ Tested on FreeBSD 7.2, 8.0, 8.1, 8.2, 9.2 and 10.0.
 
 Attributes
 ----------
+| Attribute                                 | Default | Description
+|-----------                                |---------|-------------
+| `node['freebsd']['compiletime_portsnap']` | `false` | Execute portsnap resources at compile time
 
 Usage
 -----
