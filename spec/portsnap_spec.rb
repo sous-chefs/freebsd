@@ -4,7 +4,6 @@ describe 'freebsd::portsnap' do
   let(:chef_runner) { ChefSpec::Runner.new }
   let(:chef_run) { chef_runner.converge(described_recipe) }
   let(:node) { chef_runner.node }
-  let(:node_set) { chef_runner.node.set }
   before do
     orig_file_exist = ::File.method(:exist?)
     allow(::File).to receive(:exist?) { |*args| orig_file_exist.call(*args) }
@@ -95,7 +94,7 @@ describe 'freebsd::portsnap' do
   end # context on FreeBSD 10
 
   context 'with Compile Time' do
-    before { node_set['freebsd']['compiletime'] = true }
+    before { node.set['freebsd']['compiletime'] = true }
 
     context 'on FreeBSD 9' do
       let(:chef_runner) { ChefSpec::Runner.new(platform: 'freebsd', version: '9.2') }
