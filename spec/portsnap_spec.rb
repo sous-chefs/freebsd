@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe 'freebsd::portsnap' do
-  let(:chef_runner) { ChefSpec::Runner.new }
+  let(:chef_runner) { ChefSpec::SoloRunner.new }
   let(:chef_run) { chef_runner.converge(described_recipe) }
   let(:node) { chef_runner.node }
   before do
@@ -15,7 +15,7 @@ describe 'freebsd::portsnap' do
   end
 
   context 'on FreeBSD 9' do
-    let(:chef_runner) { ChefSpec::Runner.new(platform: 'freebsd', version: '9.2') }
+    let(:chef_runner) { ChefSpec::SoloRunner.new(platform: 'freebsd', version: '9.2') }
     let(:portsnap_bin) { File.join(Chef::Config[:file_cache_path], 'portsnap') }
     let(:portsnap_options) { '' }
 
@@ -55,7 +55,7 @@ describe 'freebsd::portsnap' do
   end # context on FreeBSD 9
 
   context 'on FreeBSD 10' do
-    let(:chef_runner) { ChefSpec::Runner.new(platform: 'freebsd', version: '10.0') }
+    let(:chef_runner) { ChefSpec::SoloRunner.new(platform: 'freebsd', version: '10.0') }
     let(:portsnap_bin) { 'portsnap' }
     let(:portsnap_options) { '--interactive' }
 
@@ -97,7 +97,7 @@ describe 'freebsd::portsnap' do
     before { node.set['freebsd']['compiletime'] = true }
 
     context 'on FreeBSD 9' do
-      let(:chef_runner) { ChefSpec::Runner.new(platform: 'freebsd', version: '9.2') }
+      let(:chef_runner) { ChefSpec::SoloRunner.new(platform: 'freebsd', version: '9.2') }
       let(:portsnap_bin) { File.join(Chef::Config[:file_cache_path], 'portsnap') }
       let(:portsnap_options) { '' }
 
@@ -137,7 +137,7 @@ describe 'freebsd::portsnap' do
     end # context on FreeBSD 9
 
     context 'on FreeBSD 10' do
-      let(:chef_runner) { ChefSpec::Runner.new(platform: 'freebsd', version: '10.0') }
+      let(:chef_runner) { ChefSpec::SoloRunner.new(platform: 'freebsd', version: '10.0') }
       let(:portsnap_bin) { 'portsnap' }
       let(:portsnap_options) { '--interactive' }
 
