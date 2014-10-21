@@ -19,11 +19,11 @@
 
 case node['platform_version']
 when /10/
-  portsnap_bin = "portsnap"
-  portsnap_options = "--interactive"
+  portsnap_bin = 'portsnap'
+  portsnap_options = '--interactive'
 else
   portsnap_bin = File.join(Chef::Config[:file_cache_path], 'portsnap')
-  portsnap_options = ""
+  portsnap_options = ''
 
   # The sed forces portsnap to run non-interactively
   # fetch downloads a ports snapshot, extract puts them on disk (long)

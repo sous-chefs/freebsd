@@ -109,7 +109,7 @@ def load_current_options
 end
 
 def port_path
-  whereis = shell_out!("whereis -s #{@new_resource.name}", :env => nil)
+  whereis = shell_out!("whereis -s #{@new_resource.name}", env: nil)
   unless path == whereis.stdout[/^#{@new_resource.name}:\s+(.+)$/, 1]
     fail Chef::Exceptions::Package, "Could not find port with the name #{@new_resource.name}"
   end
@@ -117,6 +117,6 @@ def port_path
 end
 
 def ports_makefile_options_variable_value(variable = 'OPTIONS')
-  make_v = shell_out!("make -V #{variable}", :cwd => port_path, :env => nil, :returns => [0, 1])
+  make_v = shell_out!("make -V #{variable}", cwd: port_path, env: nil, returns: [0, 1])
   make_v.stdout.strip.scan(/(\S+?) ".+?" (\S+?)\b/)
 end
