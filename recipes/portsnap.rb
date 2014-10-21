@@ -41,7 +41,7 @@ end
 
 # Ensure we have a ports tree
 unless File.exist?('/usr/ports/.portsnap.INDEX')
-  execute "#{portsnap_bin} fetch extract #{portsnap_options}"
+  execute "#{portsnap_bin} fetch extract #{portsnap_options}".strip
 end
 
-execute "#{portsnap_bin} update #{portsnap_options}"
+execute "#{portsnap_bin} update #{portsnap_options}".strip
