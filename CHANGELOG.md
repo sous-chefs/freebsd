@@ -1,6 +1,11 @@
 freebsd cookbook CHANGELOG
 ==========================
 
+v0.2.0 (2014-10-22)
+-------------------
+- Add a recipe to install and configure PKGNG
+- Level up ChefSpec and ServerSpec coverage
+
 v0.1.10 (2014-10-06)
 -------------------
 - Update method used for non-interactive portsnap on FreeBSD 10
