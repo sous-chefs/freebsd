@@ -10,7 +10,7 @@ Handles FreeBSD-specific features and quirks.
 Requirements
 ------------
 
-Tested on FreeBSD 7.2, 8.0, 8.1, 8.2 and 9.0.
+Tested on FreeBSD 7.2, 8.0, 8.1, 8.2, 9.2 and 10.0.
 
 Attributes
 ----------
