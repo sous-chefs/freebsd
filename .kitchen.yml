@@ -4,7 +4,7 @@ driver:
 
 provisioner:
   name: chef_zero
-  require_chef_omnibus: 11.14.2
+  require_chef_omnibus: 11.16.4
 
 platforms:
 - name: freebsd-9.2
@@ -13,5 +13,7 @@ platforms:
 
 suites:
 - name: portsnap
-  run_list:
-  - recipe[freebsd::portsnap]
+  run_list: freebsd::portsnap
+
+- name: pkgng
+  run_list: freebsd::pkgng

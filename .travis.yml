@@ -1,6 +1,28 @@
 rvm:
   - 1.9.3
   - 2.0.0
-script:
-  - bundle exec foodcritic -f any .
-  - bundle exec rubocop
+  - 2.1
+
+bundler_args: --jobs 7
+
+branches:
+  only:
+    - master
+
+before_install:
+  - export USE_SYSTEM_GECODE=1
+  - sudo apt-get -y install libgecode-dev
+
+script: bundle exec rake travis:ci
+
+notifications:
+  hipchat:
+    on_change: true
+    on_failure: true
+    on_success: false
+    on_pull_requests: false
+    rooms:
+      # Build Statuses
+      - secure: "c0UHibvG1tqrTvwoz8qzCVVCAlT1+SuRVtporC9Dtz37Iwqgg70yIiTY82j0yZtQpzKMYKyaeNx3JkaGiAdDoO2d1gDxGk6Llbu5pEvYMkx6RPXW9jo+OQyyA09XL0gnhLhU9w+eCQW0a+jByV0sEy/J1tljdWDapIvyCphXsJo="
+      # Release Engineering
+      - secure: "EGedt0sYspwcaNM/GuDU5f4pB31/8I/JibpkCKjnBxRNlplyKE7YqAA2QjsU55yd7QFWRYW6T7ZUU3cM4Rw0GNPpLAYHQsYKTP33w6rx6WDHDo8nz+R1GmdC9LbXqOmJeqonaPRfIGogVcIdlmG6uCGZhfbwCmIV34dV0rvfkag="

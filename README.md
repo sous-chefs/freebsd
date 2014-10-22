@@ -1,6 +1,10 @@
 freebsd Cookbook
 ================
 
+[![Build Status](http://img.shields.io/travis/opscode-cookbooks/freebsd.svg)][travis]
+
+[travis]: http://travis-ci.org/opscode-cookbooks/freebsd
+
 Handles FreeBSD-specific features and quirks.
 
 Requirements
@@ -13,6 +17,16 @@ Attributes
 
 Usage
 -----
+#### freebsd::pkgng
+
+This recipe ensures `pkg` (aka `pkgng`), FreeBSD's next generation package
+management tool, is installed and configured.
+
+This recipe is only useful on FreeBSD versions before 10 as `pkg` ships
+in the base install of FreeBSD 10+. That being said the recipe is safe to
+include on the runlists of FreeBSD 10 nodes and will mostly operate in a
+no-op mode.
+
 #### freebsd::portsnap
 
 This recipe ensures the Ports Collection collection is fully up to date.
@@ -72,14 +86,14 @@ freebsd_port_options "php5" do
 end
 ```
 
-License and Authors
--------------------
+License & Authors
+-----------------
+- Author: Andrea Campi (<andrea.campi@zephirworks.com>)
+- Author: Seth Chisamore (<schisamo@getchef.com>)
 
-Author:: Andrea Campi (<andrea.campi@zephirworks.com>)
-Author:: Seth Chisamore (<schisamo@opscode.com>)
-
+```text
 Copyright 2010-2012, ZephirWorks
-Copyright 2013, Opscode, Inc. (<legal@opscode.com>)
+Copyright 2012-2014, Chef Software, Inc. (<legal@getchef.com>)
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -92,3 +106,4 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
+```

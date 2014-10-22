@@ -38,9 +38,11 @@ if chef_version < 11.14
           def initialize(*args)
             original_initialize(*args)
 
-            if node.platform == 'freebsd' && node.platform_version.to_f < 8.2 &&
+            if node['platform'] == 'freebsd' && node['platform_version'].to_f < 8.2 &&
                 @new_resource.source != 'ports'
-              Chef::Log.info "Packages for FreeBSD < 8.2 are gone, forcing #{@new_resource.name} to install from ports (was: #{@new_resource.source.inspect})"
+              Chef::Log.info 'Packages for FreeBSD < 8.2 are gone, forcing' \
+                             " #{@new_resource.name} to install from ports" \
+                             " (was: #{@new_resource.source.inspect})"
               @new_resource.source('ports')
             end
           end
@@ -59,9 +61,11 @@ else
           def initialize(*args)
             original_initialize(*args)
 
-            if node.platform == 'freebsd' && node.platform_version.to_f < 8.2 &&
+            if node['platform'] == 'freebsd' && node['platform_version'].to_f < 8.2 &&
                 @new_resource.source != 'ports'
-              Chef::Log.info "Packages for FreeBSD < 8.2 are gone, forcing #{@new_resource.name} to install from ports (was: #{@new_resource.source.inspect})"
+              Chef::Log.info 'Packages for FreeBSD < 8.2 are gone, forcing' \
+                             " #{@new_resource.name} to install from ports" \
+                             " (was: #{@new_resource.source.inspect})"
               @new_resource.source('ports')
             end
           end
