@@ -1,6 +1,10 @@
 freebsd Cookbook
 ================
 
+[![Build Status](http://img.shields.io/travis/opscode-cookbooks/freebsd.svg)][travis]
+
+[travis]: http://travis-ci.org/opscode-cookbooks/freebsd
+
 Handles FreeBSD-specific features and quirks.
 
 Requirements
