@@ -13,5 +13,4 @@ platforms:
 
 suites:
 - name: portsnap
-  run_list:
-  - recipe[freebsd::portsnap]
+  run_list: freebsd::portsnap
