@@ -2,17 +2,39 @@ require 'spec_helper'
 
 describe 'freebsd::pkgng' do
   let(:chef_run) { ChefSpec::ServerRunner.converge(described_recipe) }
+  before { stub_command('pkg -N').and_return(false) }
 
-  before { stub_command('make -V WITH_PKGNG | grep yes').and_return(false) }
+  it 'installs PKGNG' do
+    expect(chef_run).to run_execute('make UPGRADEPKG=1 -C /usr/ports/ports-mgmt/pkg install clean')
+  end
 
-  context 'FreeBSD 9' do
-    let(:chef_run) do
-      ChefSpec::ServerRunner.new(platform: 'freebsd', version: '9.2')
-        .converge(described_recipe)
+  context 'PKGNG is already installed' do
+    before { stub_command('pkg -N').and_return(true) }
+
+    it 'does not install PKGNG' do
+      expect(chef_run).to_not run_execute('make UPGRADEPKG=1 -C /usr/ports/ports-mgmt/pkg install clean')
+    end
+  end
+
+  context '/etc/make.conf exists' do
+    before do
+      allow(File).to receive(:exist?).and_call_original
+      allow(File).to receive(:exist?).with('/etc/make.conf').and_return(true)
     end
 
-    it 'installs pkgng' do
-      expect(chef_run).to run_execute('install pkgng')
+    it 'ensures WITH_PKGNG is set to yes' do
+      expect(chef_run).to run_ruby_block('Ensure ports registers new software with PKGNG')
+    end
+  end
+
+  context '/etc/make.conf does not exist' do
+    before do
+      allow(File).to receive(:exist?).and_call_original
+      allow(File).to receive(:exist?).with('/etc/make.conf').and_return(false)
+    end
+
+    it 'creates /etc/make.conf' do
+      expect(chef_run).to render_file('/etc/make.conf').with_content('WITH_PKGNG=yes')
     end
   end
 
@@ -43,6 +65,6 @@ FreeBSD: {
   end
 
   it 'notifies pkg to update' do
-    expect(chef_run.file('/etc/pkg/FreeBSD.conf')).to notify('execute[pkg update]').to(:run).immediately
+    expect(chef_run).to run_execute('pkg update')
   end
 end
