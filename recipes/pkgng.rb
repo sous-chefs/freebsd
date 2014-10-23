@@ -25,15 +25,40 @@ include_recipe 'freebsd::portsnap'
 #   https://www.freebsd.org/doc/handbook/pkgng-intro.html
 #
 #
-execute 'install pkgng' do
-  command <<-EOH
-echo "WITH_PKGNG=yes" >> /etc/make.conf
-make UPGRADEPKG=1 -C /usr/ports/ports-mgmt/pkg install clean
-  EOH
-  # It was not until FreeBSD version 1000017 that pkgng became
-  # the default binary package manager. See '/usr/ports/Mk/bsd.port.mk'.
-  not_if { node['os_version'].to_i >= 1_000_017 }
-  not_if 'make -V WITH_PKGNG | grep yes'
+execute 'make UPGRADEPKG=1 -C /usr/ports/ports-mgmt/pkg install clean' do
+  not_if 'pkg -N'
+end
+
+# To ensure that the FreeBSD Ports Collection registers new software with
+# pkg, and not the traditional packages format, FreeBSD versions earlier
+# than 10.X require this line in `/etc/make.conf`.
+#
+# Chef also uses this variable to determine if it should use the PKGNG
+# provider for FreeBSD's package resource:
+#
+#   https://github.com/opscode/chef/blob/11.16.4/lib/chef/resource/freebsd_package.rb#L57-L75
+#
+if File.exist?('/etc/make.conf')
+
+  ruby_block 'Ensure ports registers new software with PKGNG' do
+    block do
+      file = Chef::Util::FileEdit.new('/etc/make.conf')
+      file.insert_line_if_no_match(/^WITH_PKGNG/, 'WITH_PKGNG=yes')
+      file.write_file
+    end
+  end
+
+else
+
+  file '/etc/make.conf' do
+    content <<-EOH
+WITH_PKGNG=yes
+    EOH
+    owner 'root'
+    group 'wheel'
+    mode '0644'
+  end
+
 end
 
 # Upgrade existing package database
@@ -61,10 +86,7 @@ FreeBSD: {
   owner 'root'
   group 'wheel'
   mode '0644'
-  action :create_if_missing
-  notifies :run, 'execute[pkg update]', :immediately
+  action :create_if_missing # Don't modify the file if it exists
 end
 
-execute 'pkg update' do
-  action :nothing
-end
+execute 'pkg update'

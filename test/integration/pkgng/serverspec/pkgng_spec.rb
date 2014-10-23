@@ -17,3 +17,8 @@ describe command('pkg query %n pkg') do
   its(:exit_status) { should eq 0 }
   its(:stdout) { should eq("pkg\n") }
 end
+
+describe file('/etc/make.conf') do
+  it { should be_file }
+  it { should contain 'WITH_PKGNG' }
+end
