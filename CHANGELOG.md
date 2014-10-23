@@ -1,6 +1,10 @@
 freebsd cookbook CHANGELOG
 ==========================
 
+v0.2.1 (2014-10-23)
+-------------------
+- Don’t install PKGNG on 9 if it already exists
+
 v0.2.0 (2014-10-22)
 -------------------
 - Add a recipe to install and configure PKGNG
