@@ -1,6 +1,11 @@
 freebsd cookbook CHANGELOG
 ==========================
 
+v0.3.0 (2014-10-30)
+-------------------
+- Removing package provider monkey patch
+- Dropping FreeBSD 8.2 support
+
 v0.2.1 (2014-10-23)
 -------------------
 - Don’t install PKGNG on 9 if it already exists
