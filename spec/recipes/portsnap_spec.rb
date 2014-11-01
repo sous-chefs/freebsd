@@ -4,10 +4,7 @@ describe 'freebsd::portsnap' do
   let(:chef_runner) { ChefSpec::ServerRunner.new }
   let(:chef_run) { chef_runner.converge(described_recipe) }
   let(:node) { chef_runner.node }
-  before do
-    orig_file_exist = ::File.method(:exist?)
-    allow(::File).to receive(:exist?) { |*args| orig_file_exist.call(*args) }
-  end
+  before { allow(::File).to receive(:exist?).and_call_original }
 
   it 'Compile Time should be disabled by default' do
     chef_run
