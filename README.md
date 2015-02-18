@@ -1,9 +1,9 @@
 freebsd Cookbook
 ================
 
-[![Build Status](http://img.shields.io/travis/opscode-cookbooks/freebsd.svg)][travis]
+[![Build Status](http://img.shields.io/travis/chef-cookbooks/freebsd.svg)][travis]
 
-[travis]: http://travis-ci.org/opscode-cookbooks/freebsd
+[travis]: http://travis-ci.org/chef-cookbooks/freebsd
 
 Handles FreeBSD-specific features and quirks.
 
@@ -89,11 +89,11 @@ end
 License & Authors
 -----------------
 - Author: Andrea Campi (<andrea.campi@zephirworks.com>)
-- Author: Seth Chisamore (<schisamo@getchef.com>)
+- Author: Seth Chisamore (<schisamo@chef.io>)
 
 ```text
 Copyright 2010-2012, ZephirWorks
-Copyright 2012-2014, Chef Software, Inc. (<legal@getchef.com>)
+Copyright 2012-2014, Chef Software, Inc. (<legal@chef.io>)
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

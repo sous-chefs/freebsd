@@ -2,7 +2,7 @@
 # Cookbook Name:: freebsd
 # Recipe:: pkgng
 #
-# Copyright 2014, Opscode, Inc.
+# Copyright 2014, Chef Software, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -36,7 +36,7 @@ end
 # Chef also uses this variable to determine if it should use the PKGNG
 # provider for FreeBSD's package resource:
 #
-#   https://github.com/opscode/chef/blob/11.16.4/lib/chef/resource/freebsd_package.rb#L57-L75
+#   https://github.com/chef/chef/blob/11.16.4/lib/chef/resource/freebsd_package.rb#L57-L75
 #
 if File.exist?('/etc/make.conf')
 

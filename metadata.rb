@@ -1,6 +1,6 @@
 name 'freebsd'
-maintainer 'Opscode, Inc.'
-maintainer_email 'cookbooks@opscode.com'
+maintainer 'Chef Software, Inc.'
+maintainer_email 'cookbooks@chef.io'
 license 'Apache 2.0'
 description 'Handles FreeBSD-specific features'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
