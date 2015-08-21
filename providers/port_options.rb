@@ -79,7 +79,7 @@ def load_default_options
   default_options
 end
 
-def load_current_options
+def load_current_options # rubocop:disable Metrics/AbcSize
   current_options = {}
 
   ::File.open(new_resource.full_path, 'r') do |f|
