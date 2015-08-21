@@ -48,7 +48,6 @@ describe 'freebsd::portsnap' do
           .at_converge_time
       end
     end # context when the ports tree is not extracted
-
   end # context on FreeBSD 9
 
   context 'on FreeBSD 10' do
@@ -87,7 +86,6 @@ describe 'freebsd::portsnap' do
           .at_converge_time
       end
     end # context when the ports tree is not extracted
-
   end # context on FreeBSD 10
 
   context 'with Compile Time' do
@@ -130,7 +128,6 @@ describe 'freebsd::portsnap' do
             .at_compile_time
         end
       end # context when the ports tree is not extracted
-
     end # context on FreeBSD 9
 
     context 'on FreeBSD 10' do
@@ -165,8 +162,6 @@ describe 'freebsd::portsnap' do
             .at_compile_time
         end
       end # context when the ports tree is not extracted
-
     end # context on FreeBSD 10
-
   end # context with Compile Time
 end
