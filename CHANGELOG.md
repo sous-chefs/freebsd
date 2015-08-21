@@ -1,5 +1,6 @@
 freebsd cookbook CHANGELOG
 ==========================
+This file is used to list changes made in each version of the freebsd cookbook.
 
 v0.3.0 (2014-10-30)
 -------------------
