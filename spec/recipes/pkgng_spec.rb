@@ -42,7 +42,7 @@ describe 'freebsd::pkgng' do
     expect(chef_run).to create_directory('/etc/pkg').with(
       owner: 'root',
       group: 'wheel',
-      mode: '0755',
+      mode: '0755'
     )
   end
 
@@ -50,7 +50,7 @@ describe 'freebsd::pkgng' do
     expect(chef_run).to create_file_if_missing('/etc/pkg/FreeBSD.conf').with(
       owner: 'root',
       group: 'wheel',
-      mode: '0644',
+      mode: '0644'
     )
 
     expect(chef_run).to render_file('/etc/pkg/FreeBSD.conf').with_content(

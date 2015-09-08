@@ -1,8 +1,6 @@
 AllCops:
   Exclude:
     - Guardfile
-    - bin/**/*
-    - script/**/*
     - vendor/**/*
 
 AlignParameters:
@@ -11,21 +9,11 @@ ClassAndModuleChildren:
   Enabled: false
 Documentation:
   Enabled: false
-DoubleNegation:
-  Enabled: false
 Encoding:
   Enabled: false
-GuardClause:
-  Enabled: false
 LineLength:
-  Max: 120
-MethodLength:
-  Max: 30
-PercentLiteralDelimiters:
   Enabled: false
-SignalException:
+MethodLength:
   Enabled: false
 SingleSpaceBeforeFirstArg:
   Enabled: false
-TrailingComma:
-  EnforcedStyleForMultiline: comma
