@@ -17,6 +17,11 @@ Attributes
 |-----------                                |---------|-------------
 | `node['freebsd']['compiletime_portsnap']` | `false` | Execute portsnap resources at compile time
 
+Supported Versions
+------------------
+This cookbook will support stable and release [versions](https://www.freebsd.org/security/index.html#sup) of the FreeBSD Platform.
+More information on this subject can be found at [issue23](https://github.com/chef-cookbooks/freebsd/issues/23).
+
 Usage
 -----
 #### freebsd::pkgng
