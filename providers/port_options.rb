@@ -24,7 +24,7 @@ include Chef::Mixin::ShellOut
 action :create do
   if new_resource.source
     res = template new_resource.full_path do
-      mode 0644
+      mode '0644'
       source new_resource.source
       action :nothing
     end
@@ -46,7 +46,7 @@ action :create do
     end
 
     res = file new_resource.full_path do
-      mode 0644
+      mode '0644'
       content output.join("\n") + "\n"
       action :nothing
     end
