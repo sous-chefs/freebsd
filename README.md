@@ -8,8 +8,14 @@ Handles FreeBSD-specific features and quirks.
 
 Requirements
 ------------
+#### Platforms
+- FreeBSD 9/10
 
-Tested on FreeBSD 9.2 and 10.0.
+#### Chef
+- Chef 11+
+
+#### Cookbooks
+- none
 
 Attributes
 ----------
