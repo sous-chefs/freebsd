@@ -5,9 +5,9 @@ provisioner:
   name: chef_zero
 
 platforms:
-- name: freebsd-9.2
-- name: freebsd-9.2-i386
-- name: freebsd-10.1
+- name: freebsd-9.3
+- name: freebsd-9.3-i386
+- name: freebsd-10.2
 
 suites:
 - name: portsnap
