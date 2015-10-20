@@ -2,6 +2,23 @@ freebsd cookbook CHANGELOG
 ==========================
 This file is used to list changes made in each version of the freebsd cookbook.
 
+v0.4.0 (2015-10-20)
+-------------------
+* Added a new option to execute the portsnap resources at compile time: `node['freebsd']['compiletime_portsnap']`
+* Updated the supported FreeBSD releases to match those supported by the Chef Client (9/10 only)
+* Significantly expanded Chefspec testing
+* Added source_url and issues_url to the metadata
+* Updated the gitignore file
+* Test on the latest Freebsd boxes in Test Kitchen
+* Added chefignore file
+* Added Chef standard rubocop config
+* Updated Travis CI testing to use the ChefDK for up to date deps
+* Updated Gemfile with the latest testing deps
+* Updated testing and contributing docs
+* Added maintainers.md and maintainers.toml files
+* Added travis and cookbook version badges to the readme
+* Resolved Rubocop warnings
+
 v0.3.0 (2014-10-30)
 -------------------
 - Removing package provider monkey patch
