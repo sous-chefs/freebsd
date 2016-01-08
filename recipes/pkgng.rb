@@ -17,7 +17,7 @@
 # limitations under the License.
 #
 
-  if node['platform'] == 'freebsd'
+if node['platform'] == 'freebsd'
   include_recipe 'freebsd::portsnap'
 
   #

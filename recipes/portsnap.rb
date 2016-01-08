@@ -17,7 +17,7 @@
 # limitations under the License.
 #
 
-  if node['platform'] == 'freebsd'
+if node['platform'] == 'freebsd'
   case node['platform_version']
   when /10/
     portsnap_bin = 'portsnap'
