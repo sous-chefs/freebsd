@@ -1,7 +1,7 @@
 # freebsd Cookbook
 [![Build Status](https://travis-ci.org/chef-cookbooks/freebsd.svg?branch=master)](http://travis-ci.org/chef-cookbooks/freebsd) [![Cookbook Version](https://img.shields.io/cookbook/v/freebsd.svg)](https://supermarket.chef.io/cookbooks/freebsd)
 
-Handles FreeBSD-specific features and quirks.
+Sets up ports and pkgng on FreeBSD systems
 
 ## Requirements
 ### Platforms
