@@ -55,11 +55,11 @@ describe 'freebsd::pkgng' do
 
     expect(chef_run).to render_file('/etc/pkg/FreeBSD.conf').with_content(
       <<-EOH
-FreeBSD: {
-  url: "pkg+http://pkg.FreeBSD.org/${ABI}/latest",
-  mirror_type: "SRV",
-  enabled: yes
-}
+  FreeBSD: {
+    url: "pkg+http://pkg.FreeBSD.org/${ABI}/latest",
+    mirror_type: "SRV",
+    enabled: yes
+  }
       EOH
     )
   end
