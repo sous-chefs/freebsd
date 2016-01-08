@@ -1,6 +1,11 @@
 # freebsd cookbook CHANGELOG
 This file is used to list changes made in each version of the freebsd cookbook.
 
+## v0.5.1 (2016-01-08)
+- Improved the description in the readme
+- Fixed a failed spec
+- Resolved rubocop warnings
+
 ## v0.5.0 (2015-12-13)
 - Only execute the cookbooks when running on FreeBSD so they can be safely included in base roles where they might run on Linux or Windows hosts
 
