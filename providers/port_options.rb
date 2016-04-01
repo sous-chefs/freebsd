@@ -110,7 +110,7 @@ end
 
 def port_path
   whereis = shell_out!("whereis -s #{@new_resource.name}", env: nil)
-  unless path == whereis.stdout[/^#{@new_resource.name}:\s+(.+)$/, 1]
+  unless path = whereis.stdout[/^#{@new_resource.name}:\s+(.+)$/, 1]
     fail Chef::Exceptions::Package, "Could not find port with the name #{@new_resource.name}"
   end
   path
