@@ -17,6 +17,8 @@
 # limitations under the License.
 #
 
+use_inline_resources
+
 require 'chef/mixin/shell_out'
 
 include Chef::Mixin::ShellOut
