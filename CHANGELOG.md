@@ -2,6 +2,10 @@
 
 This file is used to list changes made in each version of the freebsd cookbook.
 
+## v0.6.0 (2016-04-02)
+
+- The parent directory is now created in the ports_options provider
+
 ## v0.5.2 (2016-04-01)
 
 - Resolved 'No resource, method, or local variable named `path`' error
