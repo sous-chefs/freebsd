@@ -89,7 +89,7 @@ describe 'freebsd::portsnap' do
   end # context on FreeBSD 10
 
   context 'with Compile Time' do
-    before { node.set['freebsd']['compiletime_portsnap'] = true }
+    before { node.normal['freebsd']['compiletime_portsnap'] = true }
 
     context 'on FreeBSD 9' do
       let(:chef_runner) { ChefSpec::ServerRunner.new(platform: 'freebsd', version: '9.2') }
