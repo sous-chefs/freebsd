@@ -8,7 +8,7 @@ Sets up ports and pkgng on FreeBSD systems
 - FreeBSD 9/10
 
 ### Chef
-- Chef 11+
+- Chef 12.1+
 
 ### Cookbooks
 - none
@@ -86,7 +86,7 @@ end
 
 ```text
 Copyright 2010-2012, ZephirWorks
-Copyright 2012-2015, Chef Software, Inc. (<legal@chef.io>)
+Copyright 2012-2016, Chef Software, Inc. (<legal@chef.io>)
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

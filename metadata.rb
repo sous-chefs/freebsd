@@ -8,5 +8,6 @@ version '0.6.0'
 
 supports 'freebsd'
 
-source_url 'https://github.com/chef-cookbooks/freebsd' if respond_to?(:source_url)
-issues_url 'https://github.com/chef-cookbooks/freebsd/issues' if respond_to?(:issues_url)
+source_url 'https://github.com/chef-cookbooks/freebsd'
+issues_url 'https://github.com/chef-cookbooks/freebsd/issues'
+chef_version '>= 12.1'
