@@ -2,6 +2,10 @@
 
 This file is used to list changes made in each version of the freebsd cookbook.
 
+## 1.0.0 (2016-09-15)
+- Testing updates
+- Require Chef 12.1+
+
 ## v0.6.0 (2016-04-02)
 
 - The parent directory is now created in the ports_options provider
