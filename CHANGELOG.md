@@ -2,6 +2,10 @@
 
 This file is used to list changes made in each version of the freebsd cookbook.
 
+## 1.0.1 (2016-12-14)
+
+- use portsnap interactive for freebsd >= 10 not just 10
+
 ## 1.0.0 (2016-09-15)
 - Testing updates
 - Require Chef 12.1+
