@@ -18,8 +18,8 @@
 #
 
 if node['platform'] == 'freebsd'
-  case node['platform_version']
-  when /10/
+  case node['platform_version'].split('.').first
+  when /10/, /11/
     portsnap_bin = 'portsnap'
     portsnap_options = '--interactive'
   else
