@@ -44,6 +44,24 @@ This recipe should appear first in the run list of FreeBSD nodes to ensure that 
 
 ## Resources/Providers
 
+### port
+Installs and uninstalls FreeBSD ports
+
+#### Actions
+
+Action  | Description    | Default
+------- | ---------------| -------
+install | install port   | Yes
+remove  | uninstall port | No
+
+#### Attributes
+
+Attribute | Description
+--------- | ---------------------------------------------------------------------------------------------------------------
+name      | the name of the port
+options   | if the attribute is set, options will be written to /var/db/ports before build
+
+
 ### port_options
 
 Provides an easy way to set port options from within a cookbook.
@@ -53,12 +71,14 @@ It can be used in two different ways:
 - template-based: specifying a source will write it to the correct destination with no change;
 - options hash: if a options hash is passed instead, it will be merged on top of default and current options, and the result will be written back.
 
-Note that the options hash take simple options names as keys and a boolean as value; when saving to file, this is converted to the format that FreeBSD ports expect:
+Options hash take simple option names as keys and boolean as values; when saving to file, this is converted to the format that FreeBSD ports expect:
 
 Option Key Name | Option Value | Options File
 --------------- | ------------ | -------------------
-APACHE          | true         | WITH_APACHE=true
-APACHE          | false        | WITHOUT_APACHE=true
+MAILHEAD        | true         | OPTIONS_FILE_SET+=MAILHEAD
+MAILHEAD        | false        | OPTIONS_FILE_UNSET+=MAILHEAD
+
+IMPORTANT!!! Only boolean values are supported now, for packages with radio options (like sqlite3) please use the template-based way.
 
 #### Actions
 
@@ -70,25 +90,31 @@ create | create the port options file according to the given options | Yes
 
 Attribute | Description
 --------- | ---------------------------------------------------------------------------------------------------------------
-name      | The name of the port whose options file you want to manipulate;
+name      | the name of the port whose options file you want to manipulate
 source    | if the attribute is set, it will be used to look up a template, which will then be saved as a port options file
-options   | a hash with the option name as the key, and a boolean as value.
+options   | a hash with the option name as the key, and a boolean as value
 
 #### Examples
 
 ```ruby
-# freebsd-php5-options will be written out as /var/db/ports/php5/options
-freebsd_port_options "php5" do
-  source "freebsd-php5-options.erb"
-  action :create
+# Install "mc" from ports with current (if present) or default options
+freebsd_port "mc"
+
+# Set options for "php56" and install the port
+freebsd_port "php56" do
+  options mailhead: true, ipv6: false
 end
 
-# Default options will be read from /usr/ports/lang/php5;
-# current options from /var/db/ports/php5/options (if exists);
-# the APACHE options will be set to true, the others will be unchanged
-freebsd_port_options "php5" do
-  options "APACHE" => true
-  action :create
+# freebsd-php5-options.erb will be written out as /var/db/ports/lang_php56/options
+# Use this if you need to generate options file manually
+freebsd_port_options "php56" do
+  source "freebsd-php5-options.erb"
+end
+
+# Default and current options will be taken from 'make -V VAR_NAME' commands;
+# the MAILHEAD option will be set to true, IPV6 to false and the others will be unchanged
+freebsd_port_options "php56" do
+  options mailhead: true, ipv6: false
 end
 ```
 

@@ -1,8 +1,8 @@
 #
 # Cookbook Name:: freebsd
-# Resource:: port_options
+# Resource:: port
 #
-# Copyright 2012, ZephirWorks
+# Copyright 2016, Alexander Zubkov
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,12 +17,8 @@
 # limitations under the License.
 #
 
-actions :create
-default_action :create
+actions :install, :remove
+default_action :install
 
 attribute :name, kind_of: String, name_attribute: true, required: true
-attribute :source, kind_of: String
-attribute :options, kind_of: Hash
-
-attr_accessor :options_dir, :options_path, :options_define, :port_dir,
-              :port_version, :port_options
+attribute :options, kind_of: Hash, default: nil
