@@ -8,7 +8,7 @@ Sets up ports and pkgng on FreeBSD systems
 
 ### Platforms
 
-- FreeBSD 9+
+- FreeBSD
 
 ### Chef
 
