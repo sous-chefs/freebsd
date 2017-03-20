@@ -3,11 +3,14 @@ driver:
 
 provisioner:
   name: chef_zero
+  deprecations_as_errors: true
+
+verifier:
+  name: inspec
 
 platforms:
-- name: freebsd-9.3
-- name: freebsd-9.3-i386
 - name: freebsd-10.3
+- name: freebsd-11.0
 
 suites:
 - name: portsnap
