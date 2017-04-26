@@ -59,7 +59,7 @@ action :create do
 end
 
 def load_current_resource
-  @current_resource = Chef::Resource::FreebsdPortOptions.new(@new_resource.name)
+  @current_resource = new_resource.class.new(@new_resource.name)
 
   @current_resource.default_options(load_default_options)
 

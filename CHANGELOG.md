@@ -2,6 +2,13 @@
 
 This file is used to list changes made in each version of the freebsd cookbook.
 
+## 1.0.2 (2017-04-26)
+
+- Test with delivery local mode
+- Remove the coverage report from chefspec
+- Update the license string in the metadata
+- Switch to Inspec and test on freebsd 11 not 9.3
+
 ## 1.0.1 (2016-12-14)
 
 - use portsnap interactive for freebsd >= 10 not just 10
