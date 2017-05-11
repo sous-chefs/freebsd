@@ -1,9 +1,11 @@
 # Use Travis's cointainer based infrastructure
 sudo: false
+dist: trusty
+
 addons:
   apt:
     sources:
-      - chef-stable-precise
+      - chef-current-trusty
     packages:
       - chefdk
 
@@ -23,4 +25,3 @@ script:
   - /opt/chefdk/embedded/bin/cookstyle --version
   - /opt/chefdk/embedded/bin/foodcritic --version
   - /opt/chefdk/bin/chef exec delivery local all
-
