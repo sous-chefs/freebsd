@@ -16,3 +16,5 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+
+Chef::Log.warn('freebsd::default is an empty recipe that should not be added to a run_list')
