@@ -29,7 +29,7 @@ describe 'freebsd::portsnap' do
     context 'when the ports tree is already extracted' do
       before do
         allow(::File).to receive(:exist?).with('/usr/ports/.portsnap.INDEX')
-          .and_return(true)
+                                         .and_return(true)
       end
 
       it 'does not fetch and extract' do
@@ -40,7 +40,7 @@ describe 'freebsd::portsnap' do
     context 'when the ports tree is not extracted' do
       before do
         allow(::File).to receive(:exist?).with('/usr/ports/.portsnap.INDEX')
-          .and_return(false)
+                                         .and_return(false)
       end
 
       it 'fetches and extracts with the default portsnap' do
@@ -67,7 +67,7 @@ describe 'freebsd::portsnap' do
     context 'when the ports tree is already extracted' do
       before do
         allow(::File).to receive(:exist?).with('/usr/ports/.portsnap.INDEX')
-          .and_return(true)
+                                         .and_return(true)
       end
 
       it 'does not fetch and extract' do
@@ -78,7 +78,7 @@ describe 'freebsd::portsnap' do
     context 'when the ports tree is not extracted' do
       before do
         allow(::File).to receive(:exist?).with('/usr/ports/.portsnap.INDEX')
-          .and_return(false)
+                                         .and_return(false)
       end
 
       it 'fetches and extracts with the patched portsnap bin' do
@@ -109,7 +109,7 @@ describe 'freebsd::portsnap' do
       context 'when the ports tree is already extracted' do
         before do
           allow(::File).to receive(:exist?).with('/usr/ports/.portsnap.INDEX')
-            .and_return(true)
+                                           .and_return(true)
         end
 
         it 'does not fetch and extract' do
@@ -120,7 +120,7 @@ describe 'freebsd::portsnap' do
       context 'when the ports tree is not extracted' do
         before do
           allow(::File).to receive(:exist?).with('/usr/ports/.portsnap.INDEX')
-            .and_return(false)
+                                           .and_return(false)
         end
 
         it 'fetches and extracts with the default portsnap' do
@@ -143,7 +143,7 @@ describe 'freebsd::portsnap' do
       context 'when the ports tree is already extracted' do
         before do
           allow(::File).to receive(:exist?).with('/usr/ports/.portsnap.INDEX')
-            .and_return(true)
+                                           .and_return(true)
         end
 
         it 'does not fetch and extract' do
@@ -154,7 +154,7 @@ describe 'freebsd::portsnap' do
       context 'when the ports tree is not extracted' do
         before do
           allow(::File).to receive(:exist?).with('/usr/ports/.portsnap.INDEX')
-            .and_return(false)
+                                           .and_return(false)
         end
 
         it 'fetches and extracts with the patched portsnap bin' do
