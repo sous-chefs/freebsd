@@ -9,8 +9,8 @@ verifier:
   name: inspec
 
 platforms:
-- name: freebsd-10.3
-- name: freebsd-11.0
+- name: freebsd-10
+- name: freebsd-11
 
 suites:
 - name: portsnap
