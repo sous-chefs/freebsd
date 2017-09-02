@@ -11,45 +11,6 @@ describe 'freebsd::portsnap' do
     expect(node['freebsd']['compiletime_portsnap']).to be(false)
   end
 
-  context 'on FreeBSD 9' do
-    let(:chef_runner) { ChefSpec::ServerRunner.new(platform: 'freebsd', version: '9.2') }
-    let(:portsnap_bin) { File.join(Chef::Config[:file_cache_path], 'portsnap') }
-    let(:portsnap_options) { '' }
-
-    it 'does not generate a patched portsnap bin' do
-      expect(chef_run).to run_script('create non-interactive portsnap')
-        .at_converge_time
-    end
-
-    it 'updates the extracted ports tree with the default portsnap' do
-      expect(chef_run).to run_execute("#{portsnap_bin} update")
-        .at_converge_time
-    end
-
-    context 'when the ports tree is already extracted' do
-      before do
-        allow(::File).to receive(:exist?).with('/usr/ports/.portsnap.INDEX')
-                                         .and_return(true)
-      end
-
-      it 'does not fetch and extract' do
-        expect(chef_run).to_not run_execute("#{portsnap_bin} fetch extract")
-      end
-    end # context when the ports tree is already extracted
-
-    context 'when the ports tree is not extracted' do
-      before do
-        allow(::File).to receive(:exist?).with('/usr/ports/.portsnap.INDEX')
-                                         .and_return(false)
-      end
-
-      it 'fetches and extracts with the default portsnap' do
-        expect(chef_run).to run_execute("#{portsnap_bin} fetch extract")
-          .at_converge_time
-      end
-    end # context when the ports tree is not extracted
-  end # context on FreeBSD 9
-
   context 'on FreeBSD 10' do
     let(:chef_runner) { ChefSpec::ServerRunner.new(platform: 'freebsd', version: '10.3') }
     let(:portsnap_bin) { 'portsnap' }
@@ -90,45 +51,6 @@ describe 'freebsd::portsnap' do
 
   context 'with Compile Time' do
     before { node.normal['freebsd']['compiletime_portsnap'] = true }
-
-    context 'on FreeBSD 9' do
-      let(:chef_runner) { ChefSpec::ServerRunner.new(platform: 'freebsd', version: '9.2') }
-      let(:portsnap_bin) { File.join(Chef::Config[:file_cache_path], 'portsnap') }
-
-      it 'generates a patched portsnap bin' do
-        expect(chef_run).to run_script('create non-interactive portsnap')
-          .with_interpreter('sh')
-          .at_compile_time
-      end
-
-      it 'updates the extracted ports tree with the default portsnap' do
-        expect(chef_run).to run_execute("#{portsnap_bin} update")
-          .at_compile_time
-      end
-
-      context 'when the ports tree is already extracted' do
-        before do
-          allow(::File).to receive(:exist?).with('/usr/ports/.portsnap.INDEX')
-                                           .and_return(true)
-        end
-
-        it 'does not fetch and extract' do
-          expect(chef_run).to_not run_execute("#{portsnap_bin} fetch extract")
-        end
-      end # context when the ports tree is already extracted
-
-      context 'when the ports tree is not extracted' do
-        before do
-          allow(::File).to receive(:exist?).with('/usr/ports/.portsnap.INDEX')
-                                           .and_return(false)
-        end
-
-        it 'fetches and extracts with the default portsnap' do
-          expect(chef_run).to run_execute("#{portsnap_bin} fetch extract")
-            .at_compile_time
-        end
-      end # context when the ports tree is not extracted
-    end # context on FreeBSD 9
 
     context 'on FreeBSD 10' do
       let(:chef_runner) { ChefSpec::ServerRunner.new(platform: 'freebsd', version: '10.3') }

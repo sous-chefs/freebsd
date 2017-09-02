@@ -55,7 +55,6 @@ action :create do
   end
   directory(new_resource.dir_path).run_action(:create)
   res.run_action(:create)
-  new_resource.updated_by_last_action(res.updated_by_last_action?)
 end
 
 def load_current_resource
