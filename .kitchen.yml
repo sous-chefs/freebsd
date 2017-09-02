@@ -14,7 +14,11 @@ platforms:
 
 suites:
 - name: portsnap
-  run_list: freebsd::portsnap
+  run_list: 
+    - recipe[freebsd::portsnap]
+    - recipe[test::default]
 
 - name: pkgng
-  run_list: freebsd::pkgng
+  run_list: 
+    - recipe[freebsd::pkgng]
+    - recipe[test::default]

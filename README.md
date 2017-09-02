@@ -78,16 +78,16 @@ options   | a hash with the option name as the key, and a boolean as value.
 
 ```ruby
 # freebsd-php5-options will be written out as /var/db/ports/php5/options
-freebsd_port_options "php5" do
-  source "freebsd-php5-options.erb"
+freebsd_port_options 'php5' do
+  source 'freebsd-php5-options.erb'
   action :create
 end
 
 # Default options will be read from /usr/ports/lang/php5;
 # current options from /var/db/ports/php5/options (if exists);
 # the APACHE options will be set to true, the others will be unchanged
-freebsd_port_options "php5" do
-  options "APACHE" => true
+freebsd_port_options 'php5' do
+  options 'APACHE' => true
   action :create
 end
 ```
@@ -99,7 +99,7 @@ end
 
 ```text
 Copyright 2010-2012, ZephirWorks
-Copyright 2012-2016, Chef Software, Inc. (<legal@chef.io>)
+Copyright 2012-2017, Chef Software, Inc. (<legal@chef.io>)
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

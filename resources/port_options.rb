@@ -23,14 +23,8 @@ default_action :create
 attribute :name, kind_of: String, name_attribute: true
 attribute :source, kind_of: String
 attribute :options, kind_of: Hash
-attribute :dir_path, kind_of: String
-attribute :full_path, kind_of: String
+attribute :dir_path, kind_of: String, default: lazy { |r| '/var/db/ports/' + r.name }
+attribute :full_path, kind_of: String, default: lazy { |r| r.dir_path + '/options' }
 attribute :default_options, kind_of: Hash, default: {}
 attribute :current_options, kind_of: Hash, default: {}
 attribute :file_writer, kind_of: String
-
-def initialize(*args)
-  super
-  @dir_path = '/var/db/ports/' + name
-  @full_path = @dir_path + '/options'
-end

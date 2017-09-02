@@ -18,30 +18,8 @@
 #
 
 if node['platform'] == 'freebsd'
-  platform_major_version = node['platform_version'].split('.').first.to_i
-
-  if platform_major_version >= 10
-    portsnap_bin = 'portsnap'
-    portsnap_options = '--interactive'
-  else
-    portsnap_bin = File.join(Chef::Config[:file_cache_path], 'portsnap')
-    portsnap_options = ''
-
-    # The sed forces portsnap to run non-interactively
-    # fetch downloads a ports snapshot, extract puts them on disk (long)
-    # update will update an existing ports tree
-    s = script 'create non-interactive portsnap' do
-      interpreter 'sh'
-      code <<-EOS
-        set -e # ensure we exit at first non-zero
-        sed -e 's/\\[ ! -t 0 \\]/false/' /usr/sbin/portsnap > #{portsnap_bin}
-        chmod +x #{portsnap_bin}
-      EOS
-      not_if { File.exist?(portsnap_bin) }
-      action(node['freebsd']['compiletime_portsnap'] ? :nothing : :run)
-    end
-    s.run_action(:run) if node['freebsd']['compiletime_portsnap']
-  end
+  portsnap_bin = 'portsnap'
+  portsnap_options = '--interactive'
 
   # Ensure we have a ports tree
   unless File.exist?('/usr/ports/.portsnap.INDEX')
