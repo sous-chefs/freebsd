@@ -17,7 +17,7 @@
 # limitations under the License.
 #
 
-use_inline_resources
+use_inline_resources # ~FC113
 
 require 'chef/mixin/shell_out'
 
