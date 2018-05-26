@@ -42,7 +42,7 @@ This recipe ensures the Ports Collection collection is fully up to date.
 
 This recipe should appear first in the run list of FreeBSD nodes to ensure that the package cache is up to date before managing any `package` resources with Chef.
 
-## Resources/Providers
+## Resources
 
 ### port_options
 
@@ -66,13 +66,13 @@ Action | Description                                                 | Default
 ------ | ----------------------------------------------------------- | -------
 create | create the port options file according to the given options | Yes
 
-#### Attributes
+#### Properties
 
-Attribute | Description
---------- | ---------------------------------------------------------------------------------------------------------------
-name      | The name of the port whose options file you want to manipulate;
-source    | if the attribute is set, it will be used to look up a template, which will then be saved as a port options file
-options   | a hash with the option name as the key, and a boolean as value.
+Property | Description
+-------- | --------------------------------------------------------------------------------------------------------------
+name     | The name of the port whose options file you want to manipulate;
+source   | if the property is set, it will be used to look up a template, which will then be saved as a port options file
+options  | a hash with the option name as the key, and a boolean as value.
 
 #### Examples
 
