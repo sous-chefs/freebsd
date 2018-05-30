@@ -10,4 +10,4 @@ supports 'freebsd'
 
 source_url 'https://github.com/chef-cookbooks/freebsd'
 issues_url 'https://github.com/chef-cookbooks/freebsd/issues'
-chef_version '>= 12.1'
+chef_version '>= 12.7'

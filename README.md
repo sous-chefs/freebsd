@@ -12,7 +12,7 @@ Sets up ports and pkgng on FreeBSD systems
 
 ### Chef
 
-- Chef 12.1+
+- Chef 12.7+
 
 ### Cookbooks
 
