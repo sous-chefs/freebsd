@@ -17,7 +17,6 @@
 # limitations under the License.
 #
 
-property :name, String, name_property: true
 property :source, String
 property :options, Hash
 property :dir_path, String, default: lazy { |r| '/var/db/ports/' + r.name }
