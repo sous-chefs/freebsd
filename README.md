@@ -30,12 +30,6 @@ This cookbook will support stable and release [versions](https://www.freebsd.org
 
 ## Usage
 
-### freebsd::pkgng
-
-This recipe ensures `pkg` (aka `pkgng`), FreeBSD's next generation package management tool, is installed and configured.
-
-This recipe is only useful on FreeBSD versions before 10 as `pkg` ships in the base install of FreeBSD 10+. That being said the recipe is safe to include on the runlists of FreeBSD 10 nodes and will mostly operate in a no-op mode.
-
 ### freebsd::portsnap
 
 This recipe ensures the Ports Collection collection is fully up to date.
