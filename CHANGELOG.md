@@ -2,6 +2,11 @@
 
 This file is used to list changes made in each version of the freebsd cookbook.
 
+## Unreleased
+
+- resolved cookstyle error: spec/recipes/portsnap_spec.rb:15:25 warning: `ChefDeprecations/DeprecatedChefSpecPlatform`
+- resolved cookstyle error: spec/recipes/portsnap_spec.rb:56:27 warning: `ChefDeprecations/DeprecatedChefSpecPlatform`
+
 ## 1.0.2 (2017-04-26)
 
 - Test with delivery local mode
