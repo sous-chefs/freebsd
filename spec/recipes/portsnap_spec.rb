@@ -11,8 +11,8 @@ describe 'freebsd::portsnap' do
     expect(node['freebsd']['compiletime_portsnap']).to be(false)
   end
 
-  context 'on FreeBSD 10' do
-    let(:chef_runner) { ChefSpec::ServerRunner.new(platform: 'freebsd', version: '10.3') }
+  context 'on FreeBSD 12' do
+    let(:chef_runner) { ChefSpec::ServerRunner.new(platform: 'freebsd', version: '12') }
     let(:portsnap_bin) { 'portsnap' }
     let(:portsnap_options) { '--interactive' }
 
@@ -52,8 +52,8 @@ describe 'freebsd::portsnap' do
   context 'with Compile Time' do
     before { node.override['freebsd']['compiletime_portsnap'] = true }
 
-    context 'on FreeBSD 10' do
-      let(:chef_runner) { ChefSpec::ServerRunner.new(platform: 'freebsd', version: '10.3') }
+    context 'on FreeBSD 12' do
+      let(:chef_runner) { ChefSpec::ServerRunner.new(platform: 'freebsd', version: '12') }
       let(:portsnap_bin) { 'portsnap' }
       let(:portsnap_options) { '--interactive' }
 

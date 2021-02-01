@@ -1,4 +1,3 @@
-freebsd_port_options 'php5' do
+freebsd_port_options 'php74' do
   options 'APACHE' => true
-  action :create
 end

@@ -104,8 +104,9 @@ action :create do
       output << "_OPTIONS_READ=#{new_resource.file_writer}"
     end
 
-    options = current_resource.default_options
-    options.merge!(current_resource.current_options)
+    options = {}
+    options.merge!(new_resource.default_options)
+    options.merge!(new_resource.current_options)
     options.merge!(new_resource.options)
 
     options.each_pair do |k, v|

@@ -13,7 +13,7 @@ RSpec.configure do |config|
 
   # Set a default platform (this is overriden as needed)
   config.platform  = 'freebsd'
-  config.version   = '11.1'
+  config.version   = '12'
 
   # Be random!
   config.order = 'random'

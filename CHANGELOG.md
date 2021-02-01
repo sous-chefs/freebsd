@@ -2,6 +2,14 @@
 
 This file is used to list changes made in each version of the freebsd cookbook.
 
+## Unreleased
+
+- Sous Chefs Adoption
+- Standardise files with files in sous-chefs/repo-management
+- Cookstyle fixes
+- Add GH Action testing via VirtualBox on MacOS
+- Fix issue with `port_options` not working
+
 ## 1.0.2 (2017-04-26)
 
 - Test with delivery local mode
@@ -14,6 +22,7 @@ This file is used to list changes made in each version of the freebsd cookbook.
 - use portsnap interactive for freebsd >= 10 not just 10
 
 ## 1.0.0 (2016-09-15)
+
 - Testing updates
 - Require Chef 12.1+
 
