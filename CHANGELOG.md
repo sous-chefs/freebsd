@@ -2,7 +2,7 @@
 
 This file is used to list changes made in each version of the freebsd cookbook.
 
-## Unreleased
+## 1.1.0 - *2021-02-04*
 
 - Sous Chefs Adoption
 - Standardise files with files in sous-chefs/repo-management
