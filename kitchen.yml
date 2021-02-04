@@ -5,16 +5,17 @@ provisioner:
   name: chef_zero
   deprecations_as_errors: true
   chef_license: accept-no-persist
+  chef_client_path: /usr/bin/chef-client
 
 verifier:
   name: inspec
 
 platforms:
-- name: freebsd-10
-- name: freebsd-11
+  - name: freebsd-11
+  - name: freebsd-12
 
 suites:
-- name: default
-  run_list:
-    - recipe[freebsd::portsnap]
-    - recipe[test::default]
+  - name: default
+    run_list:
+      - recipe[freebsd::portsnap]
+      - recipe[test::default]
