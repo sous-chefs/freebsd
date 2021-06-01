@@ -2,6 +2,8 @@
 
 This file is used to list changes made in each version of the freebsd cookbook.
 
+## Unreleased
+
 ## 1.1.1 - *2021-06-01*
 
 ## 1.1.0 - *2021-02-04*
