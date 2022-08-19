@@ -2,6 +2,8 @@
 
 This file is used to list changes made in each version of the freebsd cookbook.
 
+## Unreleased
+
 ## 2.0.0 - *2022-08-19*
 
 - Enable unified_mode for Chef 17 compatibility
