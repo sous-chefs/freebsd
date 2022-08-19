@@ -17,6 +17,8 @@
 # limitations under the License.
 #
 
+unified_mode true
+
 property :source, String
 property :options, Hash
 property :dir_path, String, default: lazy { |r| '/var/db/ports/' + r.name }
