@@ -40,19 +40,19 @@ jobs:
     strategy:
       matrix:
         os:
-          - 'freebsd-11'
-          - 'freebsd-12'
+          - "freebsd-11"
+          - "freebsd-12"
         suite:
-          - 'default'
+          - "default"
       fail-fast: false
 
     steps:
       - name: Check out code
         uses: actions/checkout@v3
       - name: Install Chef
-        uses: actionshub/chef-install@main
+        uses: actionshub/chef-install@2.0.4
       - name: test-kitchen
-        uses: actionshub/test-kitchen@main
+        uses: actionshub/test-kitchen@2.1.0
         env:
           CHEF_LICENSE: accept-no-persist
         with:
