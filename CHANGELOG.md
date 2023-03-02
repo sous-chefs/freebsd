@@ -4,7 +4,11 @@ This file is used to list changes made in each version of the freebsd cookbook.
 
 ## Unreleased
 
+- Standardise files with files in sous-chefs/repo-management
+
 ## 2.0.1 - *2023-02-14*
+
+- Standardise files with files in sous-chefs/repo-management
 
 ## 2.0.0 - *2022-08-19*
 
