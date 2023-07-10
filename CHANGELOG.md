@@ -2,6 +2,8 @@
 
 This file is used to list changes made in each version of the freebsd cookbook.
 
+## Unreleased
+
 ## 2.0.7 - *2023-07-10*
 
 ## 2.0.6 - *2023-06-08*
