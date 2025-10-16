@@ -2,6 +2,13 @@
 
 This file is used to list changes made in each version of the freebsd cookbook.
 
+## [2.0.13](https://github.com/sous-chefs/freebsd/compare/2.0.12...v2.0.13) (2025-10-15)
+
+
+### Bug Fixes
+
+* **ci:** Update workflows to use release pipeline ([#76](https://github.com/sous-chefs/freebsd/issues/76)) ([ed1a285](https://github.com/sous-chefs/freebsd/commit/ed1a285d9913a7991e25ca2700f34fe8f531956d))
+
 ## 2.0.6 - *2023-06-08*
 
 Standardise files with files in sous-chefs/repo-management
