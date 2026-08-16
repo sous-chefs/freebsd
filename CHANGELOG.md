@@ -2,6 +2,14 @@
 
 This file is used to list changes made in each version of the freebsd cookbook.
 
+## [2.0.14](https://github.com/sous-chefs/freebsd/compare/v2.0.13...v2.0.14) (2026-08-16)
+
+
+### Bug Fixes
+
+* **ci:** Update workflows to use release pipeline ([#76](https://github.com/sous-chefs/freebsd/issues/76)) ([ed1a285](https://github.com/sous-chefs/freebsd/commit/ed1a285d9913a7991e25ca2700f34fe8f531956d))
+* migrate dependency resolution to Policyfile ([#88](https://github.com/sous-chefs/freebsd/issues/88)) ([90176db](https://github.com/sous-chefs/freebsd/commit/90176db12efd832fed7f33ead9ab9555fa37c484))
+
 ## [2.0.13](https://github.com/sous-chefs/freebsd/compare/2.0.12...v2.0.13) (2025-10-15)
 
 
